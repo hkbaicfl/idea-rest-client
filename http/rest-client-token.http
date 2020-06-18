@@ -1,0 +1,4 @@
+### 登录获取token并设置token
+GET http://127.0.0.1:8080/login?userName=&password=
+
+> {% client.global.set("token", response.body.valueObject.token); %}

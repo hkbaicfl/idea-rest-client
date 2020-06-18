@@ -1,0 +1,57 @@
+### 1.GET请求
+GET url?id=1
+
+### 2.POST请求+普通入参
+POST url
+Content-Type: application/x-www-form-urlencoded
+
+id=1&name=admin
+
+### 3.POST请求+JSON入参
+POST url
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "admin"
+}
+
+### 4.POST请求+普通入参上传或导入文件
+POST url
+Content-Type: multipart/form-data; boundary=boundary
+
+--boundary
+Content-Disposition: form-data; name="file"; filename="test.log"
+// name为参数名，filename为文件名
+Content-Type: multipart/form-data
+
+// 文件路径
+< D:\test.log
+
+--boundary
+Content-Disposition: form-data; name="id"
+// name为参数名
+
+1
+
+### 5.POST请求+JSON入参上传或导入文件
+POST url
+// 请求头
+Content-Type: multipart/form-data; boundary=boundary
+
+--boundary
+// 上传文件部分
+Content-Disposition: form-data; name="file"; filename="test.log"
+Content-Type: multipart/form-data
+
+< D:\test.log
+
+--boundary
+// 参数部分
+Content-Disposition: form-data; name="jsonParam";
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "admin"
+}
